@@ -158,6 +158,14 @@ override open func viewDidLoad() {
         loadingView.fillContainer()
         loadingView.alpha = 0
     }
+
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+
+    public func restartCamera() {
+        picker.restartCamera()
+    }
 }
 
 extension YPImagePicker: ImagePickerDelegate {

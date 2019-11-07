@@ -156,6 +156,12 @@ open class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
     func pagerDidSelectController(_ vc: UIViewController) {
         updateMode(with: vc)
     }
+
+    func restartCamera()
+    {
+        stopCurrentCamera()
+        cameraVC?.start()
+    }
     
     func updateMode(with vc: UIViewController) {
         stopCurrentCamera()

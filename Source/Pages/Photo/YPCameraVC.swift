@@ -42,6 +42,7 @@ public class YPCameraVC: UIViewController, UIGestureRecognizerDelegate, YPPermis
     }
     
     func start() {
+        v.shotButton.isEnabled = true
         doAfterPermissionCheck { [weak self] in
             guard let strongSelf = self else {
                 return
@@ -101,7 +102,7 @@ public class YPCameraVC: UIViewController, UIGestureRecognizerDelegate, YPPermis
             self?.shoot()
         }
     }
-    
+
     func shoot() {
         // Prevent from tapping multiple times in a row
         // causing a crash
