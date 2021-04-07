@@ -329,6 +329,11 @@ open class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
         videoVC?.stopCamera()
         cameraVC?.stopCamera()
     }
+
+    func restartCamera() {
+        stopCurrentCamera()
+        cameraVC?.start()
+    }
 }
 
 extension YPPickerVC: YPLibraryViewDelegate {
@@ -378,10 +383,5 @@ extension YPPickerVC: YPLibraryViewDelegate {
     
     public func libraryViewShouldAddToSelection(indexPath: IndexPath, numSelections: Int) -> Bool {
         return imagePickerDelegate?.shouldAddToSelection(indexPath: indexPath, numSelections: numSelections) ?? true
-    }
-
-    func restartCamrea() {
-        stopCurrentCamera()
-        cameraVC?.start()
     }
 }
