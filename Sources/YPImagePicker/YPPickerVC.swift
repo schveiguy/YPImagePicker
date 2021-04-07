@@ -379,4 +379,9 @@ extension YPPickerVC: YPLibraryViewDelegate {
     public func libraryViewShouldAddToSelection(indexPath: IndexPath, numSelections: Int) -> Bool {
         return imagePickerDelegate?.shouldAddToSelection(indexPath: indexPath, numSelections: numSelections) ?? true
     }
+
+    func restartCamrea() {
+        stopCurrentCamera()
+        cameraVC?.start()
+    }
 }

@@ -21,6 +21,10 @@ open class YPImagePicker: UINavigationController {
 				return .portrait
 		}
 
+    public func restartCamera() {
+        picker.restartCamera()
+    }
+
 		private var _didFinishPicking: (([YPMediaItem], Bool) -> Void)?
 		public func didFinishPicking(completion: @escaping (_ items: [YPMediaItem], _ cancelled: Bool) -> Void) {
 				_didFinishPicking = completion

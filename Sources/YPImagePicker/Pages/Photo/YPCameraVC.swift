@@ -55,6 +55,7 @@ public class YPCameraVC: UIViewController, UIGestureRecognizerDelegate, YPPermis
     }
     
     func start() {
+        v.shotButton.isEnabled = true
         doAfterPermissionCheck { [weak self] in
             guard let strongSelf = self else {
                 return
