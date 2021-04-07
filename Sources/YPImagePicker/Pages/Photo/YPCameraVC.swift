@@ -151,9 +151,11 @@ public class YPCameraVC: UIViewController, UIGestureRecognizerDelegate, YPPermis
             }
 
             // Flip image if taken form the front camera.
-            if let device = self.photoCapture.device, device.position == .front {
+            // TURNED OFF
+            // This makes text appear backwards.
+            /*if let device = self.photoCapture.device, device.position == .front {
                 image = self.flipImage(image: image)
-            }
+            }*/
             
             DispatchQueue.main.async {
                 let noOrietationImage = image.resetOrientation()
