@@ -64,6 +64,7 @@ internal final class YPCameraVC: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     func start() {
+        v.shotButton.isEnabled = true
         doAfterCameraPermissionCheck { [weak self] in
             guard let previewContainer = self?.v.previewViewContainer else {
                 return
@@ -154,9 +155,11 @@ internal final class YPCameraVC: UIViewController, UIGestureRecognizerDelegate, 
             }
 
             // Flip image if taken form the front camera.
-            if let device = self.photoCapture.device, device.position == .front {
+            // TURNED OFF
+            // This makes text appear backwards.
+            /*if let device = self.photoCapture.device, device.position == .front {
                 image = self.flipImage(image: image)
-            }
+            }*/
             
             let noOrietationImage = image.resetOrientation()
             

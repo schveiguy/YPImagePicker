@@ -336,6 +336,11 @@ open class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
         videoVC?.stopCamera()
         cameraVC?.stopCamera()
     }
+
+    func restartCamera() {
+        stopCurrentCamera()
+        cameraVC?.start()
+    }
 }
 
 extension YPPickerVC: YPLibraryViewDelegate {

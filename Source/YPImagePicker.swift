@@ -47,6 +47,10 @@ open class YPImagePicker: UINavigationController {
         return .portrait
     }
 
+    public func restartCamera() {
+        picker.restartCamera()
+    }
+
     open override var preferredStatusBarStyle: UIStatusBarStyle {
         return YPImagePickerConfiguration.shared.preferredStatusBarStyle
     }
