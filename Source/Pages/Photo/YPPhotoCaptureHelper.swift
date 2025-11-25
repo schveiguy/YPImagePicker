@@ -30,14 +30,14 @@ internal final class YPPhotoCaptureHelper: NSObject {
     private var isPreviewSetup: Bool = false
     private var previewView: UIView!
     private var videoLayer: AVCaptureVideoPreviewLayer!
-    private var block: ((Data) -> Void)?
+    private var block: ((Data, [String:Any]) -> Void)?
     private var initVideoZoomFactor: CGFloat = 1.0
 }
 
 // MARK: - Public
 
 extension YPPhotoCaptureHelper {
-    func shoot(completion: @escaping (Data) -> Void) {
+    func shoot(completion: @escaping (Data, [String:Any]) -> Void) {
         block = completion
         
         // Set current device orientation
@@ -122,7 +122,7 @@ extension YPPhotoCaptureHelper {
 extension YPPhotoCaptureHelper: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard let data = photo.fileDataRepresentation() else { return }
-        block?(data)
+        block?(data, photo.metadata)
     }
 }
 

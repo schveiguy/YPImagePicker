@@ -11,7 +11,7 @@ import AVFoundation
 import Photos
 
 internal final class YPCameraVC: UIViewController, UIGestureRecognizerDelegate, YPPermissionCheckable {
-    var didCapturePhoto: ((UIImage) -> Void)?
+    var didCapturePhoto: ((UIImage, [String:Any]) -> Void)?
     let v: YPCameraView!
 
     private let photoCapture = YPPhotoCaptureHelper()
@@ -140,8 +140,8 @@ internal final class YPCameraVC: UIViewController, UIGestureRecognizerDelegate, 
         // causing a crash
         v.shotButton.isEnabled = false
 
-        photoCapture.shoot { imageData in
-            
+        photoCapture.shoot { (imageData, metadata) in
+
             guard let shotImage = UIImage(data: imageData) else {
                 return
             }
@@ -164,7 +164,7 @@ internal final class YPCameraVC: UIViewController, UIGestureRecognizerDelegate, 
             let noOrietationImage = image.resetOrientation()
             
             DispatchQueue.main.async {
-                self.didCapturePhoto?(noOrietationImage.resizedImageIfNeeded())
+                self.didCapturePhoto?(noOrietationImage.resizedImageIfNeeded(), metadata)
             }
         }
     }
